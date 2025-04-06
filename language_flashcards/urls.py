@@ -20,8 +20,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index),
-#    path('cards-list', views.cards_list),
-#    path('add-card', views.add_card),
-#    path('add-lesson', views.add_lesson)
+    path('', views.home, name='home'),
+    path('cards/', views.cards_list, name='cards-list'),
+    path('cards/add/', views.add_card, name='add-card'),
+    path('lessons/', views.lessons_list, name='lessons-list'),
+    path('lessons/add/', views.add_lesson, name='add-lesson'),
 ]
