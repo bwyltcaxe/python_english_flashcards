@@ -1,11 +1,47 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Добавить карточку{% endblock %}
 
 {% block content %}
-<h1>Добавление новой карточки</h1>
-<div class="empty-state">
-    <p>Здесь будет форма для добавления карточки</p>
+<div class="card-form-container">
+    <h1 class="card-form-title">Добавление новой карточки</h1>
+    <form method="post" class="card-form">
+        <div class="form-group">
+            <label for="id_word" class="form-label">Слово:</label>
+            <input type="text" name="word" id="id_word" class="form-control" placeholder="Введите слово или термин" required>
+        </div>
+        <div class="form-group">
+            <label for="id_explanation" class="form-label">Объяснение:</label>
+            <textarea name="explanation" id="id_explanation" class="form-control" placeholder="Введите объяснение" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="collection-toggle">
+                <button type="button" class="toggle-btn active" id="existing-collection-btn">
+                    Выбрать коллекцию
+                </button>
+                <button type="button" class="toggle-btn" id="new-collection-btn">
+                    Новая коллекция
+                </button>
+            </div>
+            <div id="existing-collection-group">
+                <label for="id_collection" class="form-label">Существующие коллекции:</label>
+                <select name="collection" id="id_collection" class="form-control">
+                    <option value="">-- Выберите коллекцию --</option>
+                    {% for collection in collections %}
+                        <option value="{{ collection.id }}">{{ collection.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="new-collection-group" style="display: none;">
+                <label for="id_new_collection" class="form-label">Название коллекции:</label>
+                <input type="text" name="new_collection" id="id_new_collection" class="form-control" placeholder="Введите название новой коллекции">
+            </div>
+        </div>
+        <button type="submit" class="btn-submit">Добавить карточку</button>
+    </form>
 </div>
-{% endblock %}
 
+<script src="{% static 'js/cards.js' %}"></script>
+
+{% endblock %}
