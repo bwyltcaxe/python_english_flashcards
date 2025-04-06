@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import CardForm
 from .models import Collection, Card
 
@@ -32,7 +32,10 @@ def add_card(request):
     else:
         form = CardForm()
 
-    return render(request, 'cards/add.html', {'form': form})
+    return render(request, 'cards/add.html', {
+        'form': form,
+        'collections': Collection.objects.all()
+    })
 
 def lessons_list(request):
     return render(request, 'lessons/list.html')

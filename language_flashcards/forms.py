@@ -14,6 +14,7 @@ class CardForm(forms.Form):
     collection = forms.ModelChoiceField(
         queryset=Collection.objects.all(),
         empty_label="Выберите коллекцию",
+        required=False,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     new_collection = forms.CharField(
@@ -24,4 +25,7 @@ class CardForm(forms.Form):
             'class': 'form-control'
         })
     )
+
+    def clean(self):
+        cleaned_data = super().clean()
 

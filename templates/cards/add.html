@@ -27,9 +27,9 @@
             <div id="existing-collection-group">
                 <label for="id_collection" class="form-label">Существующие коллекции:</label>
                 <select name="collection" id="id_collection" class="form-control">
-                    <option value="">-- Выберите коллекцию --</option>
-                    {% for collection in collections %}
-                        <option value="{{ collection.id }}">{{ collection.name }}</option>
+                    <option value="">Выберите коллекцию</option>
+                    {% for item in collections %}
+                        <option value="{{ item.id }}">{{ item.name }}</option>
                     {% endfor %}
                 </select>
             </div>
