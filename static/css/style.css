@@ -169,3 +169,54 @@ textarea.form-control {
     background: #2980b9;
 }
 
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.simple-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.simple-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.card-divider {
+    height: 2px;
+    background: linear-gradient(to right, #e0e0e0, #a0a0a0, #e0e0e0);
+    margin: 10px 0;
+    border: none;
+}
+
+.card-text {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.collection-tag {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #666;
+    border: 1px solid #e0e0e0;
+}
+

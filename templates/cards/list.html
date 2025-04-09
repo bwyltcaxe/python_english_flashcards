@@ -1,10 +1,38 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Список карточек{% endblock %}
 
 {% block content %}
-<h1>Все карточки</h1>
-<div class="empty-state">
-    <p>Карточки будут здесь</p>
-</div>
+    <div class="collection-filter mb-4">
+        <select id="collection-filter" class="form-control">
+            <option value="all">Все коллекции</option>
+            {% for collection in collections %}
+                <option value="{{ collection.id }}">
+                    {{ collection.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <h1>{{ selected_collection }}</h1>
+
+    <div class="cards-container">
+        {% for card in cards %}
+            <div class="simple-card">
+                <h3 class="card-title">{{ card.word }}</h3>
+                <div class="card-divider"></div>
+                <p class="card-text">{{ card.explanation }}</p>
+                <div class="collection-tag">{{ card.collection.name }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.getElementById('collection-filter').addEventListener('click', function() {
+            const collectionId = this.value;
+            window.location.href = `?collection_id=${collectionId}`;
+        });
+    </script>
+
 {% endblock %}

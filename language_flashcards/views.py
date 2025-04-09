@@ -6,8 +6,20 @@ def home(request):
     return render(request, 'index.html')
 
 def cards_list(request):
-    return render(request, 'cards/list.html')
+    collection_id = request.GET.get('collection_id')
 
+    if collection_id and collection_id != 'all':
+        selected_collection = Collection.objects.get(id=collection_id)
+        cards = Card.objects.filter(collection=selected_collection)
+    else:
+        selected_collection = 'Все карточки'
+        cards = Card.objects.all()
+
+    return render(request, 'cards/list.html', {
+        "collections": Collection.objects.all(),
+        "cards": cards,
+        "selected_collection": selected_collection
+    })
 
 def add_card(request):
     if request.method == 'POST':
