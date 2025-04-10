@@ -23,6 +23,4 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('cards/', views.cards_list, name='cards-list'),
     path('cards/add/', views.add_card, name='add-card'),
-    path('lessons/', views.lessons_list, name='lessons-list'),
-    path('lessons/add/', views.add_lesson, name='add-lesson'),
 ]

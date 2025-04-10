@@ -49,9 +49,3 @@ def add_card(request):
         'collections': Collection.objects.all()
     })
 
-def lessons_list(request):
-    return render(request, 'lessons/list.html')
-
-def add_lesson(request):
-    return render(request, 'lessons/add.html')
-
