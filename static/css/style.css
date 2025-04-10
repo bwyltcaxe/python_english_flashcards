@@ -169,6 +169,16 @@ textarea.form-control {
     background: #2980b9;
 }
 
+.btn-cancel {
+    color: white;
+    background-color: #d43a2f;
+}
+
+.btn-cancel:hover {
+    background-color: #ad2e24;
+}
+
+/* Cards containers.  */
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
