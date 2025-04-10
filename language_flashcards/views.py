@@ -59,6 +59,11 @@ def edit_card(request, card_id):
             card.explanation = form.cleaned_data['explanation']
             card.save()
             return redirect('cards-list')
+    else:
+        form = CardForm()
 
-    return render(request, 'cards/edit.html', {'card': card})
+    return render(request, 'cards/edit.html', {
+        'form': form,
+        'card': card
+    })
 

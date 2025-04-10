@@ -4,6 +4,12 @@
 {% block title %}Добавить карточку{% endblock %}
 
 {% block content %}
+{% if form.non_field_errors %}
+    <div class="form-error global-error">
+        {{ form.non_field_errors.0 }}
+    </div>
+{% endif %}
+
 <div class="card-form-container">
     <h1 class="card-form-title">Добавление новой карточки</h1>
     <form method="post" class="card-form">
