@@ -24,13 +24,12 @@
         </div>
 
         <div id="existing-collection-group">
-            <label for="id_collection" class="form-label">Существующие коллекции:</label>
-            <select name="collection" id="id_collection" class="form-control">
+            <select name="collection" id="id_collection" class="form-control" disabled>
                 <option value="{{ card.collection.id }}">{{ card.collection.name }}</option>
             </select>
         </div>
 
-        <div class="collection-toggle">
+        <div class="collection-toggle" style="margin-top:10px;">
             <button type="submit" class="toggle-btn active">Сохранить изменения</button>
             <button type="button" class="toggle-btn btn-cancel" onclick="window.location.href='{% url 'cards-list' %}'">Отмена</button>
         </div>
