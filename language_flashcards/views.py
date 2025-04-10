@@ -49,6 +49,8 @@ def add_card(request):
         'collections': Collection.objects.all()
     })
 
-def edit_card(request):
-    return render(request)
+def edit_card(request, card_id):
+    card = Card.objects.get(id=card_id)
+    print(card.word)
+    return render(request, 'cards/edit.html', {'card': card})
 
