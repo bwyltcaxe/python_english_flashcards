@@ -51,6 +51,14 @@ def add_card(request):
 
 def edit_card(request, card_id):
     card = Card.objects.get(id=card_id)
-    print(card.word)
+
+    if request.method == 'POST':
+        form = CardForm(request.POST)
+        if form.is_valid():
+            card.word = form.cleaned_data['word']
+            card.explanation = form.cleaned_data['explanation']
+            card.save()
+            return redirect('cards-list')
+
     return render(request, 'cards/edit.html', {'card': card})
 
