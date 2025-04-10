@@ -24,6 +24,7 @@
                 <div class="card-divider"></div>
                 <p class="card-text">{{ card.explanation }}</p>
                 <div class="collection-tag">{{ card.collection.name }}</div>
+                <a href="{% url 'edit-card' card.id %}" class="edit-card-button">Редактировать</a>
             </div>
         {% endfor %}
     </div>

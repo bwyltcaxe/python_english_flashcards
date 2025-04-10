@@ -49,3 +49,6 @@ def add_card(request):
         'collections': Collection.objects.all()
     })
 
+def edit_card(request):
+    return render(request)
+

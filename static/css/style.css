@@ -211,12 +211,30 @@ textarea.form-control {
 }
 
 .collection-tag {
-    display: inline-block;
+    display: block;
+    float: left;
     background: #f0f0f0;
-    padding: 4px 10px;
+    padding: 5px 10px;
     border-radius: 15px;
     font-size: 0.8rem;
     color: #666;
     border: 1px solid #e0e0e0;
+}
+
+.edit-card-button {
+    display: block;
+    padding: 5px 10px;
+    background-color: #038cfc;
+    color: white;
+    float: right;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.5s ease;
+}
+
+.edit-card-button:hover {
+    background-color: #0079db;
 }
 
