@@ -214,6 +214,7 @@ textarea.form-control {
 }
 
 .card-text {
+    word-break: break-word;
     color: #555;
     line-height: 1.5;
     margin-bottom: 20px;

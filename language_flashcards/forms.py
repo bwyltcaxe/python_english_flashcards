@@ -7,10 +7,9 @@ class CardForm(forms.Form):
         'placeholder': 'Введите слово',
         'class': 'form-control'
     }))
-    explanation = forms.CharField(widget=forms.Textarea(attrs={
+    explanation = forms.CharField(max_length=128, widget=forms.Textarea(attrs={
         'placeholder': 'Введите объяснение',
         'class': 'form-control',
-        'rows': 3
     }))
     collection = forms.ModelChoiceField(
         queryset=Collection.objects.all(),
@@ -34,13 +33,11 @@ class CardForm(forms.Form):
         explanation = cleaned_data.get('explanation', '').strip()
         new_collection = cleaned_data.get('new_collection', '').strip()
 
-        if not word or not explanation:
+        if not word:
             raise forms.ValidationError('Слово должно быть длиной от 1 до 32 символов')
 
-        print (word)
-
-        print (new_collection)
-        print (re.fullmatch(r'^[a-zA-Zа-яА-ЯёЁ\s\-]+$', new_collection))
+        if not explanation:
+            raise forms.ValidationError('Объяснение должно быть длиной от 1 до 128 символов')
 
         cleaned_data['word'] = word
         cleaned_data['explanation'] = explanation
