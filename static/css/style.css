@@ -53,6 +53,10 @@ nav a:hover::after {
     width: 100%;
 }
 
+.active {
+    font-weight: 600;
+}
+
 /* Main content styles.  */
 .container {
     max-width: 1200px;
@@ -272,7 +276,7 @@ textarea.form-control {
 
 .collection-links a {
     display: inline-block;
-    color: #3498db; /* blue by default */
+    color: #3498db;
     font-weight: 700;
     font-size: 1.1rem;
     text-decoration: none;
