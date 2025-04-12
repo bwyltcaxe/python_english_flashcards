@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Экзаменация — {{ collection.name }}{% endblock %}
+
+{% block content %}
+    <h1>Коллекция: {{ collection.name }}</h1>
+
+    <div id="exam-card" class="simple-card exam-flashcard">
+        <div id="exam-word" class="card-title word"></div>
+        <div id="exam-answer" class="card-text explanation hidden"></div>
+    </div>
+
+    <p id="exam-progress" style="text-align: center; margin-top: 20px;"></p>
+
+    <script>
+        const cards = [
+            {% for card in cards %}
+                {
+                    word: "{{ card.word|escapejs }}",
+                    explanation: "{{ card.explanation|escapejs }}"
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+    </script>
+
+    <script src="{% static 'js/exam-session.js' %}"></script>
+
+{% endblock %}

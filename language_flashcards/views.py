@@ -70,9 +70,17 @@ def edit_card(request, card_id):
 def exam_collections(request):
     collections = Collection.objects.all()
     return render(request, 'exam/exam_collections.html', {
-        "collections": collections
+        'collections': collections
     })
 
 def exam_session(request, collection_id):
-    return render(request, 'cards/exam_session.html')
+    selected_collection = Collection.objects.get(id=collection_id)
+    print(selected_collection)
+    cards = list(Card.objects.filter(collection=selected_collection))
+    print(cards)
+
+    return render(request, 'exam/exam_session.html', {
+        'collection': selected_collection,
+        'cards': cards
+    })
 
