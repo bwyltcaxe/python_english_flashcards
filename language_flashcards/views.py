@@ -75,9 +75,7 @@ def exam_collections(request):
 
 def exam_session(request, collection_id):
     selected_collection = Collection.objects.get(id=collection_id)
-    print(selected_collection)
     cards = list(Card.objects.filter(collection=selected_collection))
-    print(cards)
 
     return render(request, 'exam/exam_session.html', {
         'collection': selected_collection,
