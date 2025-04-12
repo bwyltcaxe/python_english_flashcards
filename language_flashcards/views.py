@@ -67,3 +67,12 @@ def edit_card(request, card_id):
         'card': card
     })
 
+def exam_collections(request):
+    collections = Collection.objects.all()
+    return render(request, 'exam/exam_collections.html', {
+        "collections": collections
+    })
+
+def exam_session(request, collection_id):
+    return render(request, 'cards/exam_session.html')
+

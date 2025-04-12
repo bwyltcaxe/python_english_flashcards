@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Выбор коллекции{% endblock %}
+
+{% block content %}
+    <h1>Выберите коллекцию для экзаменации</h1>
+    <ul class="collection-links">
+        {% for collection in collections %}
+            <li>
+                <a href="{% url 'exam-session' collection.id %}">{{ collection.name }}</a>
+            </li>
+        {% empty %}
+            <li>Нет доступных коллекций.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

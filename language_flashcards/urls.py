@@ -24,4 +24,6 @@ urlpatterns = [
     path('cards/', views.cards_list, name='cards-list'),
     path('cards/add/', views.add_card, name='add-card'),
     path('cards/edit/<int:card_id>/', views.edit_card, name='edit-card'),
+    path('exam/', views.exam_collections, name='exam'),
+    path('exam/<int:collection_id>/', views.exam_session, name='exam-session'),
 ]

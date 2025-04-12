@@ -264,3 +264,39 @@ textarea.form-control {
     font-weight: 500;
 }
 
+/* Exam.  */
+.collection-links {
+    list-style: none;
+}
+
+.collection-links li {
+    margin-bottom: 0.75rem;
+}
+
+.collection-links a {
+    display: inline-block;
+    color: #3498db; /* blue by default */
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    position: relative;
+    padding-left: 12px;
+    transition: color 0.3s ease;
+}
+
+.collection-links a::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    transition: transform 0.3s ease;
+}
+
+.collection-links a:hover {
+    color: #2980b9;
+}
+
+.collection-links a:hover::before {
+    transform: translateX(4px);
+}
+

@@ -13,6 +13,8 @@
             <li><a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>Главная</a></li>
             <li><a href="{% url 'cards-list' %}" {% if 'cards/list' in request.path %}class="active"{% endif %}>Список карточек</a></li>
             <li><a href="{% url 'add-card' %}" {% if 'cards/add' in request.path %}class="active"{% endif %}>Добавить карточку</a></li>
+            <li><a href="{% url 'exam' %}" {% if 'exam' in request.path %}class="active"{% endif %}>Экзаменация</a></li>
+        </ul>
         </ul>
     </nav>
 
