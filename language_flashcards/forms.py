@@ -1,8 +1,14 @@
+"""Forms handling for language flashcard service"""
 import re
 from django import forms
 from .models import Collection
 
 class CardForm(forms.Form):
+    """
+    Card form. It's usable to add and edit new cards.
+    Also, the whole validation is handled here (in 'clean' method).
+    """
+
     word = forms.CharField(max_length=32, widget=forms.TextInput(attrs={
         'placeholder': 'Введите слово',
         'class': 'form-control'
@@ -44,13 +50,16 @@ class CardForm(forms.Form):
         cleaned_data['new_collection'] = new_collection
 
         if not re.fullmatch(r'[a-zA-Zа-яА-ЯёЁ\s\-]+', word):
-            raise forms.ValidationError('Слово может содержать только русские или английские буквы.')
+            raise forms.ValidationError(
+                'Слово может содержать только русские или английские буквы.'
+            )
 
         if not cleaned_data.get('collection') and not new_collection:
             raise forms.ValidationError('Пожалуйста, выберите коллекцию или введите новую')
 
         if new_collection and not re.fullmatch(r'^[a-zA-Zа-яА-ЯёЁ\s\-]+$', new_collection):
-            raise forms.ValidationError('Коллекция может содержать только русские или английские буквы, пробелы и дефисы.')
+            raise forms.ValidationError(
+                'Коллекция может содержать только русские или английские буквы, пробелы и дефисы.'
+            )
 
         return cleaned_data
-

@@ -1,11 +1,16 @@
+"""Views functions for language flashcards service"""
 from django.shortcuts import render, redirect
 from .forms import CardForm
 from .models import Collection, Card
 
 def home(request):
+    """Greeting page rendering"""
     return render(request, 'index.html')
 
 def cards_list(request):
+    """
+    Display a list of cards with respect to filter.
+    """
     collection_id = request.GET.get('collection_id')
 
     if collection_id and collection_id != 'all':
@@ -22,6 +27,10 @@ def cards_list(request):
     })
 
 def add_card(request):
+    """
+    Handle the creation of a new card.
+    The whole validation exists in forms.
+    """
     if request.method == 'POST':
         form = CardForm(request.POST)
         if form.is_valid():
@@ -31,7 +40,7 @@ def add_card(request):
             new_collection = form.cleaned_data['new_collection']
 
             if new_collection:
-                collection, created = Collection.objects.get_or_create(
+                collection, _ = Collection.objects.get_or_create(
                     name=new_collection
                 )
 
@@ -50,6 +59,9 @@ def add_card(request):
     })
 
 def edit_card(request, card_id):
+    """
+    Edit an already existing card's word or explanation.
+    """
     card = Card.objects.get(id=card_id)
 
     if request.method == 'POST':
@@ -68,12 +80,18 @@ def edit_card(request, card_id):
     })
 
 def exam_collections(request):
+    """
+    Display a list of collections to choose one for an exam.
+    """
     collections = Collection.objects.all()
     return render(request, 'exam/exam_collections.html', {
         'collections': collections
     })
 
 def exam_session(request, collection_id):
+    """
+    Run an exam's session. Show cards.
+    """
     selected_collection = Collection.objects.get(id=collection_id)
     cards = list(Card.objects.filter(collection=selected_collection))
 
@@ -81,4 +99,3 @@ def exam_session(request, collection_id):
         'collection': selected_collection,
         'cards': cards
     })
-
