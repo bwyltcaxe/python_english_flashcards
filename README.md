@@ -54,9 +54,9 @@ After click:
 
 ![Exam-session-explanation](images/exam-session-answer.png)
 
-## For Develoeprs
+## For Developers
 
-Some useful informatio for developers.
+Some useful information for developers.
 
 ### Run pylint
 
